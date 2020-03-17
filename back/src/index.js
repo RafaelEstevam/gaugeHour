@@ -16,7 +16,7 @@ mongoose.connect('mongodb+srv://omni10:omni10@cluster0-9vg2e.mongodb.net/omni10?
 });//conexão com banco de dados
 
 app.use(cors());
-app.use(express.json()); //Entender requisições JSON;
+app.use(express.json()); //permitir requisições JSON;
 app.use(routes); //Importar rotas
 
 server.listen(3030);

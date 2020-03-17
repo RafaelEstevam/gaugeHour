@@ -1,4 +1,6 @@
 const User = require("../modules/user");
+const Message = require("../utils/messages");
+const generateToken = require("../utils/generateToken");
 
 module.exports = {
 
@@ -7,6 +9,7 @@ module.exports = {
         const {name, last_name, email, password, registration} = req.body;
         let user = await User.findOne({email})
         if(!user){
+
             user = await User.create({
                 name,
                 last_name,
@@ -14,9 +17,12 @@ module.exports = {
                 password,
                 registration
             })
-            return res.json(user);
+            
+            user.password = undefined;
+
+            return res.status(200).send({success: Message.success.user.resgistrationSuccess, token: generateToken({id: user._id})});
         }else{
-            res.send("Usuário já cadastrado");
+            return res.status(400).send({error: Message.error.user.alreadyExist});
         }
     },
 
