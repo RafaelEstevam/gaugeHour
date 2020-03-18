@@ -9,7 +9,6 @@ module.exports = {
         const {name, last_name, email, password, registration} = req.body;
         let user = await User.findOne({email})
         if(!user){
-
             user = await User.create({
                 name,
                 last_name,
@@ -17,10 +16,8 @@ module.exports = {
                 password,
                 registration
             })
-            
             user.password = undefined;
-
-            return res.status(200).send({success: Message.success.user.resgistrationSuccess, token: generateToken({id: user._id})});
+            return res.status(200).send({success: Message.success.user.resgistrationSuccess, userId: user._id, token: generateToken({id: user._id})});
         }else{
             return res.status(400).send({error: Message.error.user.alreadyExist});
         }
@@ -34,10 +31,11 @@ module.exports = {
     },
 
     async show (req, res){
-        const {github_user} = req.params;
-        let oneDev = await Dev.findOne({github_user});
-        if(oneDev){
-            return res.json(oneDev);
-        }
+        console.log(req)
+        // const {github_user} = req.params;
+        // let oneDev = await Dev.findOne({github_user});
+        // if(oneDev){
+        //     return res.json(oneDev);
+        // }
     }
 }

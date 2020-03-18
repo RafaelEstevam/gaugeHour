@@ -7,7 +7,7 @@ function App() {
       <div className="container">
         <div className="row">
           <div className="col-md-12">
-            <h2 className="text-center mb-3">Login</h2>
+            <h2 className="text-center mb-3">Home</h2>
           </div>
         </div>
       </div>
