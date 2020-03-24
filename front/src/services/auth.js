@@ -1,5 +1,3 @@
-import api from './api';
-
 const auth = {
     setUserAuth: (userId, token) =>{
         localStorage.setItem("userId", userId);
