@@ -31,11 +31,10 @@ module.exports = {
     },
 
     async show (req, res){
-        console.log(req)
-        // const {github_user} = req.params;
-        // let oneDev = await Dev.findOne({github_user});
-        // if(oneDev){
-        //     return res.json(oneDev);
-        // }
+        const _id = req.params.id;
+        let user = await User.findOne({_id: _id});
+        if(user){
+            return res.json(user);
+        }
     }
 }

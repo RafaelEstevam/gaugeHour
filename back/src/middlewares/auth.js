@@ -3,7 +3,6 @@ const authConfig = require('../config/auth.json');
 const Messages = require('../utils/messages');
 
 module.exports = (req, res, next) => {
-    
     const authHeader = req.headers.authorization;
     if(!authHeader){
         return res.status(401).send({error: Messages.error.auth.middleware.tokenNotFound})
